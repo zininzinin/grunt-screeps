@@ -11,7 +11,7 @@
 require('./test/screeps_test');
 require('./test/screeps_empty_test');
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
@@ -31,7 +31,10 @@ module.exports = function (grunt) {
             options: {
                 email: 'EMAIL',
                 password: 'PASSWORD',
-                branch: 'default'
+                branch: 'default',
+                hostname: 'screeps.com',
+                private: false,
+                port: 443
             },
             test: {
                 src: ['test/fixtures/happy/*']
@@ -59,7 +62,7 @@ module.exports = function (grunt) {
     grunt.registerTask('test-happy', ['screeps', 'nodeunit:testHappy']);
     grunt.registerTask('test-empty', ['screeps', 'nodeunit:testEmpty']);
 
-    grunt.registerTask('switch-to-empty-tests', function () {
+    grunt.registerTask('switch-to-empty-tests', function() {
         grunt.config.set('screeps.test.src', ['test/fixtures/empty/*']);
     });
 
@@ -70,5 +73,4 @@ module.exports = function (grunt) {
         'switch-to-empty-tests',
         'test-empty'
     ]);
-
 };
